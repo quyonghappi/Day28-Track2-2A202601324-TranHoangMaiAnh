@@ -1,0 +1,23 @@
+{
+  "scope": "basic-system-no-gpu",
+  "topic": "data.raw",
+  "kafka_message_key": "ip01-evidence-key-v2-20260903",
+  "headers": {
+    "traceparent": "00-1283df00c0172a72f2684eb033f077ee-4ee6746fb6b3ce4f-01",
+    "idempotency-key": "ip01-evidence-key-v2-20260903",
+    "schema_version": "1"
+  },
+  "event": {
+    "event_id": "b0d66db19e1342a0b8b96ff34d5b6bfb",
+    "idempotency_key": "ip01-evidence-key-v2-20260903",
+    "entity_id": "ip01-evidence-doc-v2",
+    "traceparent": "00-1283df00c0172a72f2684eb033f077ee-37d873f725db0ce0-01",
+    "kind": "document"
+  },
+  "assertions": {
+    "key_equals_idempotency_key": true,
+    "header_equals_idempotency_key": true,
+    "header_trace_id_equals_event_trace_id": true,
+    "entity_id_intentionally_differs": true
+  }
+}

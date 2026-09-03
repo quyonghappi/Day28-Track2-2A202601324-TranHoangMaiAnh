@@ -1,0 +1,28 @@
+{
+  "incident": "Controlled Qdrant outage",
+  "scope": "basic-system-no-gpu",
+  "action": "Stopped and restarted only the qdrant Docker Compose service; its named volume was retained.",
+  "before": {
+    "http_status": 200,
+    "readiness": "degraded",
+    "qdrant_ready": true,
+    "points": 13,
+    "trace_id": "2112293c7c1c5f759cf800d9e4b36646"
+  },
+  "during_outage": {
+    "http_status": 503,
+    "readiness": "not_ready",
+    "qdrant_ready": false,
+    "signal": "ResponseHandlingException: name or service not known",
+    "trace_id": "9d1bf78e1ab74e3a3a51b4c3bd3df2cb"
+  },
+  "recovery": {
+    "action": "Started qdrant and waited for the service to answer readiness probes.",
+    "http_status": 200,
+    "readiness": "degraded",
+    "qdrant_ready": true,
+    "points": 13,
+    "trace_id": "d8ac39e213e743f9843ea12e57965a47"
+  },
+  "conclusion": "The mandatory Qdrant dependency correctly changed readiness to not_ready. Its point count was unchanged after recovery, so this incident did not lose indexed data. vLLM remained the only optional unavailable dependency."
+}

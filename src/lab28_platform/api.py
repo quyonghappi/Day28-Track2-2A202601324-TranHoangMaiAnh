@@ -186,7 +186,7 @@ def _publish(runtime: Runtime, topic: str, event: IngestionEvent) -> IngestionAc
     ):
         started = time.perf_counter()
         try:
-            runtime.publisher.publish(topic, event.entity_id, event)
+            runtime.publisher.publish(topic, event.idempotency_key, event)
         except BrokerUnavailable as error:
             metrics.INGESTION_EVENTS.labels(
                 kind=event.kind, topic=topic, outcome="rejected"
